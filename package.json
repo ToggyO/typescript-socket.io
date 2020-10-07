@@ -1,0 +1,82 @@
+{
+  "name": "typesript-socket.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon --watch 'src/**/*.ts'",
+    "check-files": "tsc --listFiles",
+    "copy-files": "copyfiles .env* dist",
+    "build": "rm -rf ./dist && npm run copy-files && tsc -p .",
+    "start": "cross-env NODE_ENV=production ts-node dist/src/index.js",
+    "entity:create": "ts-node ./node_modules/typeorm/cli.js -f ./ormconfig.ts entity:create -n",
+    "subscriber:create": "ts-node ./node_modules/typeorm/cli.js -f ./ormconfig.ts subscriber:create -n",
+    "migrate:create": "ts-node ./node_modules/typeorm/cli.js -f ./ormconfig.ts migration:create -n",
+    "migrate:show": "ts-node ./node_modules/typeorm/cli.js -f ./ormconfig.ts migration:show",
+    "migrate:up": "ts-node ./node_modules/typeorm/cli.js -f ./ormconfig.ts migration:run",
+    "migrate:down": "ts-node ./node_modules/typeorm/cli.js -f ./ormconfig.ts migration:revert",
+    "prettier": "prettier --write src/**/*.{ts,js}",
+    "lint:ts": "eslint --quiet --color --no-error-on-unmatched-pattern src --ext .ts,.js",
+    "lint:ts:fix": "eslint --quiet --color --no-error-on-unmatched-pattern --fix src --ext .ts,.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,js}": [
+      "npm run prettier",
+      "npm run lint:ts"
+    ]
+  },
+  "dependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "@types/cors": "^2.8.7",
+    "@types/express": "^4.17.8",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/module-alias": "^2.0.0",
+    "@types/node": "^14.11.2",
+    "@types/node-notifier": "^8.0.0",
+    "@types/socket.io": "^2.1.11",
+    "@types/uuid": "^8.3.0",
+    "@types/validator": "^13.1.0",
+    "body-parser": "^1.19.0",
+    "chalk": "^4.1.0",
+    "cookie-parser": "^1.4.5",
+    "copyfiles": "^2.4.0",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
+    "moment": "^2.29.0",
+    "node-notifier": "^8.0.0",
+    "pg": "^8.3.3",
+    "pg-hstore": "^2.3.3",
+    "reflect-metadata": "^0.1.13",
+    "socket.io": "^2.3.0",
+    "ts-node": "^9.0.0",
+    "typeorm": "^0.2.26",
+    "typescript": "^4.0.2",
+    "uuid": "^8.3.0",
+    "validator": "^13.1.17",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-import-resolver-typescript": "^2.3.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.1.2"
+  }
+}

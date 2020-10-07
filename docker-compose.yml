@@ -1,0 +1,32 @@
+version: '3.3'
+services:
+  alabuga-service-postgres-prod:
+    container_name: alabuga-service-postgres-prod
+    image: postgres:12.1
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DATABASE}
+      COMPOSE_HTTP_TIMEOUT: 30
+    volumes:
+      - './dump:/var/lib/postgresql/data'
+    ports:
+      - ${POSTGRES_EXTERNAL_PORT}:${POSTGRES_PORT}
+    networks:
+      - app-network
+
+  alabuga-service-backend-prod:
+    container_name: alabuga-service-backend-prod
+    restart: unless-stopped
+    build: .
+    ports:
+      - ${PORT}:${PORT}
+    depends_on:
+      - alabuga-service-postgres-prod
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
