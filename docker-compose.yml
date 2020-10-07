@@ -1,7 +1,7 @@
 version: '3.3'
 services:
-  alabuga-service-postgres-prod:
-    container_name: alabuga-service-postgres-prod
+  typescript-socket-service-postgres-prod:
+    container_name: typescript-socket-service-postgres-prod
     image: postgres:12.1
     restart: unless-stopped
     environment:
@@ -16,14 +16,14 @@ services:
     networks:
       - app-network
 
-  alabuga-service-backend-prod:
-    container_name: alabuga-service-backend-prod
+  typescript-socket-service-backend-prod:
+    container_name: typescript-socket-service-backend-prod
     restart: unless-stopped
     build: .
     ports:
       - ${PORT}:${PORT}
     depends_on:
-      - alabuga-service-postgres-prod
+      - typescript-socket-service-postgres-prod
     networks:
       - app-network
 

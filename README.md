@@ -22,7 +22,7 @@ Typescript-socket.io
 
 #### Required dependencies
 - [Node.js](https://nodejs.org/) v.14.8.0+
-- [Cloned repository](https://bitbucket.org/mgrsys/alabuga_backend/src)
+- [Cloned repository](https://github.com/ToggyO/typescript-socket.io)
 - Docker & Docker Compose 
 to run a containerized application.
 
@@ -49,9 +49,9 @@ Deployment
 1. Install Docker & Docker-compose;
 2. Install Git;
 3. Clone repo from:
-    - HTTPS - `git clone https://ToggyO@bitbucket.org/mgrsys/alabuga_backend.git`
-    - SSH - `git clone git@bitbucket.org:mgrsys/alabuga_backend.git`
-4. Enter source dir - `cd alabuga-service`;
+    - HTTPS - `git clone https://github.com/ToggyO/typescript-socket.io.git`
+    - SSH - `git clone git@github.com:ToggyO/typescript-socket.io.git`
+4. Enter source dir - `cd typescript-socket.io`;
 5. On first launch run - `. start_prod.sh`;
 
 - If you want to restart app, to apply changes, then run - `. restart_prod.sh`
