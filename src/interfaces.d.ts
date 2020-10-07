@@ -1,5 +1,5 @@
 /**
- * Description: Base application interfaces
+ * Description: Base application interfaces and types
  */
 
 import { Server } from 'http';
